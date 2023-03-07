@@ -1,32 +1,24 @@
 import { useState, useEffect } from 'react';
+import { Gif } from './components/Gif';
+import getGifs from './services/getGifs';
 import './App.css';
 
 function App() {
+	const [gifs, setGifs] = useState([]);
+	const [keyword, setKeyword] = useState('programming');
 
-  const URL = `https://api.giphy.com/v1/gifs/search?api_key=${import.meta.env.VITE_REACT_API_KEY}&q=panda&limit=10&offset=0&rating=g&lang=en`;
+	useEffect(() => {
+		getGifs({ keyword }).then((gifs) => setGifs(gifs));
+	}, [keyword]);
 
-  const [gifs, setGifs] = useState([]);
-
-  useEffect(() => {
-    fetch(URL)
-      .then(res => res.json())
-      .then(data => {
-        setGifs(data.data);
-        console.log(data.data)
-      })
-      .catch(err => console.log(err));
-  }, [])
-
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-      {
-        gifs.map(gif => (
-          <img src={gif.images.downsized_medium.url} alt={gif.title} />
-        ))
-      }
-    </div>
-  )
+	return (
+		<div className='App'>
+			<h1>Gif App</h1>
+			{gifs.map((gif) => (
+				<Gif key={gif.id} {...gif} />
+			))}
+		</div>
+	)
 }
 
 export default App;
