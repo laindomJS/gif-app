@@ -1,5 +1,5 @@
 
-export default async function getGifs(keyword) {
+export default async function getGifs({ keyword }) {
   
   const URL = `https://api.giphy.com/v1/gifs/search?api_key=${import.meta.env.VITE_REACT_API_KEY}&q=${keyword}&limit=10&offset=0&rating=g&lang=en`;
   
