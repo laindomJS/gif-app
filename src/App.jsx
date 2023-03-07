@@ -1,16 +1,17 @@
-import { ListOfGifs } from './components/ListOfGifs';
-import './App.css';
+import { Home } from './pages/Home';
+import { Detail } from './pages/Detail';
+import { SearchResults } from './pages/SearchResults';
 
 import { Link, Route } from 'wouter';
+import './App.css';
 
 function App() {
 	return (
 		<div className='App'>
-			<h1>Gif App</h1>
-      <Link to="/gifs/mario">Gifs de Mario</Link>
-      <Link to="/gifs/link">Gifs de Link</Link>
-      <Link to="/gifs/samus">Gifs de Samus</Link>
-      <Route path='/gifs/:keyword' component={ListOfGifs} />
+      <Link to='/'>Home</Link>
+      <Route component={Home} path='/' />
+      <Route component={SearchResults} path='/search/:keyword' />
+      <Route component={Detail} path='/gif/:id' />
 		</div>
 	)
 }

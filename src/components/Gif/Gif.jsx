@@ -1,10 +1,11 @@
+import { Link } from 'wouter';
 import './Gif.css';
 
 export const Gif = (gif) => {
 	return (
-		<a href='#' className='gif'>
+		<Link to={`/gif/${gif.id}`} className='gif'>
 			<h4>{gif.title}</h4>
 			<img src={gif.url} alt={gif.title} />
-		</a>
+		</Link>
 	)
 }
