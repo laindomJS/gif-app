@@ -1,13 +1,16 @@
 import { ListOfGifs } from './components/ListOfGifs';
 import './App.css';
 
-import { Route } from 'wouter';
+import { Link, Route } from 'wouter';
 
 function App() {
 	return (
 		<div className='App'>
 			<h1>Gif App</h1>
-      <Route path='/gif/:keyword' component={ListOfGifs} />
+      <Link to="/gifs/mario">Gifs de Mario</Link>
+      <Link to="/gifs/link">Gifs de Link</Link>
+      <Link to="/gifs/samus">Gifs de Samus</Link>
+      <Route path='/gifs/:keyword' component={ListOfGifs} />
 		</div>
 	)
 }
