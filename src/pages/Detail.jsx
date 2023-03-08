@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+import { GifsContext } from '../context/GifsContext';
+
+import { Gif } from '../components/Gif/Gif';
+
 export const Detail = ({ params }) => {
-  
-  const { id } = params;
-  
-  return (
-    <h1>Gif con el ID {id}</h1>
-  )
+	const { id } = params;
+	const { gifs } = useContext(GifsContext);
+	
+	const gif = gifs.find(gif => gif.id === id);
+ 
+	return <Gif {...gif} />
 }
