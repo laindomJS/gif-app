@@ -6,9 +6,11 @@ import { GifsContextProvider } from './context/GifsContext';
 
 function App() {
 	return (
-		<div className='App'>
+		<div className='w-full h-full flex flex-col items-center justify-center text-center'>
 			<GifsContextProvider>
-				<Link to='/'>Home</Link>
+				<div className='font-bold text-3xl my-8'>
+					<Link to='/'>Home</Link>
+				</div>
 				<Route component={Home} path='/' />
 				<Route component={SearchResults} path='/search/:keyword' />
 				<Route component={Detail} path='/gif/:id' />
