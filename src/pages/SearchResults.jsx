@@ -10,7 +10,10 @@ export const SearchResults = ({ params }) => {
     {
       loading
       ? <h3>Cargando...</h3>
-      : <ListOfGifs gifs={gifs} />
+      : <>
+        <h3>{decodeURI(keyword)}</h3>
+        <ListOfGifs gifs={gifs} />
+      </>
     }
   </>
 }

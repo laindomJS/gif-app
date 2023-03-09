@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useGifs } from '../hooks/useGifs';
 import { ListOfGifs } from '../components/ListOfGifs/ListOfGifs';
-
-const POPULAR_GIFS = ['Bladerunner', 'Mario', 'Link', 'Goku', 'Programming'];
+import { TrendingSearchs } from '../components/TrendingSearches/TrendingSearches';
 
 export const Home = () => {
 	
@@ -28,13 +27,9 @@ export const Home = () => {
 				<button>Search</button>
 			</form>
 			<ListOfGifs gifs={gifs} />
-			<ul>
-				{POPULAR_GIFS.map((popularGif) => (
-					<li key={popularGif}>
-						<Link to={`/search/${popularGif}`}>Gifs de {popularGif}</Link>
-					</li>
-				))}
-			</ul>
+			<div className='App-category'>
+				<TrendingSearchs />
+			</div>
 		</>
 	)
 }
