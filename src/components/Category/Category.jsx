@@ -1,4 +1,5 @@
 import { Link } from 'wouter';
+import uuid from 'react-uuid';
 
 export const Category = ({ name, options = [] }) => {
 	return (
@@ -6,7 +7,7 @@ export const Category = ({ name, options = [] }) => {
       <h3 className='font-bold text-2xl md:text-3xl mb-4'>{name}</h3>
       <ul className='flex flex-wrap space-x-6 items-center justify-center'>
         {options.map(option => (
-          <Link to={`/search/${option}`}>
+          <Link key={uuid()} to={`/search/${option}`}>
             <span className='text-blue-400 underline'>{option}</span>
           </Link>
         ))}

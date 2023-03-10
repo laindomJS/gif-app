@@ -4,7 +4,7 @@ import { SearchResults } from './pages/SearchResults';
 import { Link, Route } from 'wouter';
 import { GifsContextProvider } from './context/GifsContext';
 
-function App() {
+function App () {
 	return (
 		<div className='w-full h-full flex flex-col items-center justify-center text-center'>
 			<GifsContextProvider>
