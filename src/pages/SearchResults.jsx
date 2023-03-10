@@ -3,17 +3,19 @@ import { useGifs } from '../hooks/useGifs';
 
 export const SearchResults = ({ params }) => {
 	const { keyword } = params;
+	const { loading, gifs, setPage } = useGifs({ keyword })
 
-	const { loading, gifs } = useGifs({ keyword })
+  const handleNextPage = () => setPage(prevPage => prevPage + 1);
 
 	return <>
     {
       loading
       ? <h3>Cargando...</h3>
       : <div className=''>
-        <h3 className='uppercase font-medium text-center text-xl'>{decodeURI(keyword)} Gifs</h3>
-        <ListOfGifs gifs={gifs} />
+          <h3 className='uppercase font-medium text-center text-xl'>{decodeURI(keyword)} Gifs</h3>
+          <ListOfGifs gifs={gifs} />
       </div>
     }
+    <button className='h-10 w-32 bg-blue-500 font-bold' onClick={handleNextPage}>Get next Page</button>
   </>
 }

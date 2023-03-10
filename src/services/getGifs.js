@@ -12,8 +12,8 @@ const fromApiResponseToGifs = apiResponse => {
 }
 
 
-export default async function getGifs({ keyword }) {
-  const URL = `${import.meta.env.VITE_REACT_API_URL}/gifs/search?api_key=${import.meta.env.VITE_REACT_API_KEY}&q=${keyword}&limit=20&offset=0&rating=g&lang=en`;
+export default async function getGifs({ limit = 20, keyword, page = 0 }) {
+  const URL = `${import.meta.env.VITE_REACT_API_URL}/gifs/search?api_key=${import.meta.env.VITE_REACT_API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`;
 
   return fetch(URL)
     .then(res => res.json())
