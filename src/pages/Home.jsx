@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { useGifs } from '../hooks/useGifs';
 import { ListOfGifs } from '../components/ListOfGifs/ListOfGifs';
-import { TrendingSearchs } from '../components/TrendingSearches/TrendingSearches';
+import { LazyTrending } from '../components/TrendingSearches/TrendingSearches';
 
 export const Home = () => {
 	
@@ -27,7 +27,7 @@ export const Home = () => {
 				<button className='h-10 bg-cyan-500 w-24 md:w-32 transition-transform cursor-pointer hover:-scale-50'>Search</button>
 			</form>
 			<ListOfGifs gifs={gifs} />
-			<TrendingSearchs />
+			<LazyTrending />
 		</>
 	)
 }
