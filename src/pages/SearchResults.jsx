@@ -14,8 +14,8 @@ export const SearchResults = ({ params }) => {
       : <div className=''>
           <h3 className='uppercase font-medium text-center text-xl'>{decodeURI(keyword)} Gifs</h3>
           <ListOfGifs gifs={gifs} />
+          <button className='h-10 w-32 bg-blue-500 font-bold mt-8' onClick={handleNextPage}>Get next Page</button>
       </div>
     }
-    <button className='h-10 w-32 bg-blue-500 font-bold' onClick={handleNextPage}>Get next Page</button>
   </>
 }
