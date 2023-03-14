@@ -1,11 +1,20 @@
-import { useGlobalGifs } from '../hooks/useGlobalGifs';
+import { Redirect } from 'wouter';
 import { Gif } from '../components/Gif/Gif';
+import { useSingleGif } from '../hooks/useSingleGif';
 
 export const Detail = ({ params }) => {
-	const { id } = params;
-	const gifs = useGlobalGifs();
-	
-	const gif = gifs.find(gif => gif.id === id);
- 
+	const { gif, isLoading, isError }= useSingleGif({ id: params.id  });
+
+	if (isLoading) {
+		return (
+			<>
+				<h1>Loading...</h1>				
+			</>
+		)
+	}
+
+	if (isError) return <Redirect to="/404" />
+	if (!gif) return null;
+
 	return <Gif {...gif} />
 }
